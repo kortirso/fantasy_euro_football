@@ -21,6 +21,9 @@ gem 'webpacker', '~> 5.2.1'
 # Different
 gem 'therubyracer', platforms: :ruby
 
+# Auth
+gem 'devise'
+
 group :development, :test do
   # testing
   gem 'database_cleaner', '~> 1.8.5'
@@ -44,6 +47,7 @@ end
 
 group :test do
   gem 'json_spec'
+  gem 'rails-controller-testing'
   gem 'shoulda-matchers'
   gem 'simplecov', require: false
 end

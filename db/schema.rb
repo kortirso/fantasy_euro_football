@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define() do
+ActiveRecord::Schema.define(version: 2020_11_11_193438) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -120,14 +120,19 @@ ActiveRecord::Schema.define() do
     t.index ["transfer_id", "player_id"], name: "transfers_players_transfer_id_player_id_index", unique: true
   end
 
-  create_table "users", id: :bigint, default: nil, force: :cascade do |t|
-    t.text "email", null: false
-    t.text "password_digest", null: false
-    t.string "uuid", limit: 255, default: -> { "gen_random_uuid()" }, null: false
-    t.datetime "created_at", precision: 6, default: -> { "now()" }, null: false
-    t.datetime "updated_at", precision: 6, default: -> { "now()" }, null: false
-    t.index ["email"], name: "users_email_key", unique: true
-    t.index ["uuid"], name: "users_uuid_key", unique: true
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   create_table "users_teams", id: :bigint, default: nil, force: :cascade do |t|

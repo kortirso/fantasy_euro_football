@@ -5,6 +5,6 @@ class Gameweek < ApplicationRecord
 
   has_many :games, dependent: :destroy
   has_many :lineups, dependent: :destroy
-  has_many :gameweeks_players, dependent: :destroy
+  has_many :gameweeks_players, class_name: 'Gameweeks::Player', dependent: :destroy
   has_many :transfers, dependent: :destroy
 end

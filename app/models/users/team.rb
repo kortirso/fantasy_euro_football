@@ -15,7 +15,7 @@ module Users
     belongs_to :user
     belongs_to :championship
 
-    has_many :users_teams_players, dependent: :destroy
+    has_many :users_teams_players, class_name: 'Users::Teams::Player', dependent: :destroy
     has_many :players, through: :users_teams_players
     has_many :lineups, dependent: :destroy
     has_many :transfers, dependent: :destroy

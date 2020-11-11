@@ -15,4 +15,12 @@ RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
+
+  config.include Devise::Test::ControllerHelpers, type: :controller
+
+  include Warden::Test::Helpers
+  Warden.test_mode!
+  config.after do
+    Warden.test_reset!
+  end
 end
