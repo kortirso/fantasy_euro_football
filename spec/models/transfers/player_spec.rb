@@ -6,4 +6,9 @@ describe Transfers::Player, type: :model do
 
     expect(transfers_player).to be_valid
   end
+
+  describe 'associations' do
+    it { is_expected.to belong_to :transfer }
+    it { is_expected.to belong_to :player }
+  end
 end

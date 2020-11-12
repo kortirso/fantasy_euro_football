@@ -15,9 +15,14 @@ module Users
     belongs_to :user
     belongs_to :championship
 
-    has_many :users_teams_players, class_name: 'Users::Teams::Player', dependent: :destroy
+    has_many :users_teams_players,
+             class_name:  'Users::Teams::Player',
+             foreign_key: :users_team_id,
+             inverse_of:  :users_team,
+             dependent:   :destroy
+
     has_many :players, through: :users_teams_players
-    has_many :lineups, dependent: :destroy
-    has_many :transfers, dependent: :destroy
+    has_many :lineups, foreign_key: :users_team_id, inverse_of: :users_team, dependent: :destroy
+    has_many :transfers, foreign_key: :users_team_id, inverse_of: :users_team, dependent: :destroy
   end
 end

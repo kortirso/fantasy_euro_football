@@ -6,4 +6,9 @@ describe Lineups::Player, type: :model do
 
     expect(lineups_player).to be_valid
   end
+
+  describe 'associations' do
+    it { is_expected.to belong_to :lineup }
+    it { is_expected.to belong_to :player }
+  end
 end

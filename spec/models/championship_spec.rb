@@ -6,4 +6,10 @@ describe Championship, type: :model do
 
     expect(championship).to be_valid
   end
+
+  describe 'associations' do
+    it { is_expected.to have_many(:users_teams).class_name('Users::Team').dependent(:destroy) }
+    it { is_expected.to have_many(:teams).dependent(:destroy) }
+    it { is_expected.to have_many(:gameweeks).dependent(:destroy) }
+  end
 end

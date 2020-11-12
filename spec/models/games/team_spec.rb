@@ -6,4 +6,9 @@ describe Games::Team, type: :model do
 
     expect(games_team).to be_valid
   end
+
+  describe 'associations' do
+    it { is_expected.to belong_to :game }
+    it { is_expected.to belong_to :team }
+  end
 end

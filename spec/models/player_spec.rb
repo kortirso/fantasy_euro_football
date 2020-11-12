@@ -6,4 +6,12 @@ describe Player, type: :model do
 
     expect(player).to be_valid
   end
+
+  describe 'associations' do
+    it { is_expected.to belong_to(:team).optional }
+    it { is_expected.to have_many(:users_teams_players).class_name('Users::Teams::Player').dependent(:destroy) }
+    it { is_expected.to have_many(:lineups_players).class_name('Lineups::Player').dependent(:destroy) }
+    it { is_expected.to have_many(:gameweeks_players).class_name('Gameweeks::Player').dependent(:destroy) }
+    it { is_expected.to have_many(:transfers_players).class_name('Transfers::Player').dependent(:destroy) }
+  end
 end
