@@ -10,5 +10,6 @@ describe Game, type: :model do
   describe 'associations' do
     it { is_expected.to belong_to :gameweek }
     it { is_expected.to have_many(:games_teams).class_name('Games::Team').dependent(:destroy) }
+    it { is_expected.to have_many(:teams).through(:games_teams) }
   end
 end

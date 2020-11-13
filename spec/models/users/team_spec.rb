@@ -13,5 +13,6 @@ describe Users::Team, type: :model do
     it { is_expected.to have_many(:users_teams_players).class_name('Users::Teams::Player').dependent(:destroy) }
     it { is_expected.to have_many(:lineups).dependent(:destroy) }
     it { is_expected.to have_many(:transfers).dependent(:destroy) }
+    it { is_expected.to have_many(:players).through(:users_teams_players) }
   end
 end

@@ -11,5 +11,6 @@ describe Team, type: :model do
     it { is_expected.to belong_to :championship }
     it { is_expected.to have_many(:players).dependent(:nullify) }
     it { is_expected.to have_many(:games_teams).class_name('Games::Team').dependent(:destroy) }
+    it { is_expected.to have_many(:games).through(:games_teams) }
   end
 end
