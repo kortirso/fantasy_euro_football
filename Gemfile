@@ -16,6 +16,7 @@ gem 'puma', '~> 5.0.2'
 
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'foreman', '0.87.2'
+gem 'view_component', require: 'view_component/engine'
 gem 'webpacker', '~> 5.2.1'
 
 # Different
@@ -23,6 +24,9 @@ gem 'therubyracer', platforms: :ruby
 
 # Auth
 gem 'devise'
+
+# localize
+gem 'route_translator'
 
 group :development, :test do
   # testing
